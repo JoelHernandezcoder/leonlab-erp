@@ -1,11 +1,16 @@
 <?php
 
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/clients', [ClientController::class,'index']);
+Route::get('/clients/create', [ClientController::class, 'create']);
+Route::post('/clients', [ClientController::class, 'store']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
