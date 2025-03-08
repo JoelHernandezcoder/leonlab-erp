@@ -5,7 +5,7 @@
         'type' => 'text',
         'id' => $name,
         'name' => $name,
-        'class' => 'rounded-xl bg-white border border-white/10 px-5 py-4 w-full',
+        'class' => 'rounded-xl bg-white border border-white/10 px-5 py-4 w-full dark:bg-gray-400',
         'value' => old($name)
     ];
 @endphp

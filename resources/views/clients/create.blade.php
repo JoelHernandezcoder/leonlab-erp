@@ -4,7 +4,7 @@
             <x-forms.input label="Nombre" name="name" required />
             <x-forms.input label="País" name="country" required />
             <div class="text-center">
-                <x-forms.button>Crear Cliente</x-forms.button>
+                <x-forms.button>Create Client</x-forms.button>
             </div>
         </div>
     </x-forms.form>

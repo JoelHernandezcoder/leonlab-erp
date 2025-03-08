@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
-use App\Models\Sale;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -13,7 +12,13 @@ class ClientController extends Controller
         $clients = Client::with('sales')->get();
         return view('clients.index', [
             'client' => $clients,
-            'sales' => Sale::all(),
+        ]);
+    }
+    public function show(Client $client)
+    {
+        return view('clients.show', [
+            'client' => $client,
+            'sales' =>$client->sales,
         ]);
     }
 
@@ -31,6 +36,11 @@ class ClientController extends Controller
 
         $client = Client::create($attributes);
 
+        return redirect('/clients');
+    }
+    public function destroy(Client $client)
+    {
+        $client->delete();
         return redirect('/clients');
     }
 }

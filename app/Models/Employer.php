@@ -11,6 +11,8 @@ class Employer extends Model
     /** @use HasFactory<\Database\Factories\EmployerFactory> */
     use HasFactory;
 
+    protected $table = 'employees';
+
     public function line(): BelongsTo
     {
         return $this->belongsTo(ProductionLine::class);

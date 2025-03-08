@@ -11,6 +11,13 @@ class Medication extends Model
     /** @use HasFactory<\Database\Factories\MedicationFactory> */
     use HasFactory;
 
+    protected $fillable = [
+        'name' ,
+        'price' ,
+        'description' ,
+        'photo' ,
+    ];
+
     public function sale(): BelongsTo
     {
         return $this->belongsTo(Sale::class);
