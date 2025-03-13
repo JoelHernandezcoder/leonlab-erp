@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->foreignId('production_order_id')->constrained()->onDelete('cascade');
-            $table->string('name',10)->unique();
-            $table->decimal('price',15);
+            $table->string('name', 20)->unique();
+            $table->decimal('price', 15);
             $table->date('expiration_date');
+            $table->boolean('paid')->default(false);
             $table->timestamps();
         });
     }

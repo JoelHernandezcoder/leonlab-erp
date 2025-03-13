@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\ClientController;
-use App\Http\Controllers\EmployerController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\MedicationController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -22,13 +23,18 @@ Route::get('/medications/{medication}', [MedicationController::class, 'show']);
 Route::delete('/medications/{client}', [MedicationController::class, 'destroy']);
 Route::post('/medications', [MedicationController::class, 'store']);
 
-Route::get('/employees', [EmployerController::class, 'index']);
-Route::get('/employees/create', [EmployerController::class, 'create']);
-Route::get('/employees/{employer}', [EmployerController::class, 'show']);
-Route::delete('/employees/{client}', [EmployerController::class, 'destroy']);
-Route::post('/employees', [EmployerController::class, 'store']);
+Route::get('/employees', [EmployeeController::class, 'index']);
+Route::get('/employees/create', [EmployeeController::class, 'create']);
+Route::get('/employees/{employee}', [EmployeeController::class, 'show']);
+Route::delete('/employees/{employee}', [EmployeeController::class, 'destroy']);
+Route::post('/employees', [EmployeeController::class, 'store']);
 
-
+Route::get('/services', [ServiceController::class, 'index']);
+Route::get('/services/create', [ServiceController::class, 'create']);
+Route::get('/services/{service}', [ServiceController::class, 'show']);
+Route::post('/services/{service}/pay', [ServiceController::class, 'pay']);
+Route::delete('/services/{service}', [ServiceController::class, 'destroy']);
+Route::post('/services', [ServiceController::class, 'store']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

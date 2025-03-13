@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Employer;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 
-class EmployerController extends Controller
+class EmployeeController extends Controller
 {
     public function index()
     {
-        $employees = Employer::with('line')->get();
+        $employees = Employee::paginate(10);
         return view('employees.index', [
             'employees' => $employees,
         ]);
     }
-    public function show(Employer $employer)
+    public function show(Employee $employee)
     {
         return view('employees.show', [
-            'employer' => $employer,
-            'line' =>$employer->line,
+            'employee' => $employee,
+            'line' =>$employee->line,
         ]);
     }
 
@@ -35,13 +35,13 @@ class EmployerController extends Controller
 
         ]);
 
-        $employer = Employer::create($attributes);
+        $employee = Employee::create($attributes);
 
         return redirect('/employees');
     }
-    public function destroy(Employer $employer)
+    public function destroy(Employee $employee)
     {
-        $employer->delete();
+        $employee->delete();
         return redirect('/employees');
     }
 

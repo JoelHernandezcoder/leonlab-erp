@@ -11,8 +11,15 @@ class Service extends Model
     /** @use HasFactory<\Database\Factories\ServiceFactory> */
     use HasFactory;
 
+    protected $fillable = [
+        'production_order_id',
+        'name',
+        'price',
+        'expiration_date',
+        'paid',
+    ];
     public function order(): BelongsTo
     {
-        return $this->belongsTo(ProductionOrder::class);
+        return $this->belongsTo(ProductionOrder::class, 'production_order_id');
     }
 }

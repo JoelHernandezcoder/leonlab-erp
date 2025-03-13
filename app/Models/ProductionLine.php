@@ -19,6 +19,6 @@ class ProductionLine extends Model
 
     public function employees(): HasMany
     {
-        return $this->HasMany(Employer::class);
+        return $this->HasMany(Employee::class);
     }
 }

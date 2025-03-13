@@ -1,4 +1,4 @@
-@props(['label', 'name'])
+@props(['label', 'name', 'options' => []])
 
 @php
     $defaults = [
@@ -9,8 +9,9 @@
 @endphp
 
 <x-forms.field :$label :$name>
-    <select {{ $attributes($defaults) }}>
-        {{ $slot }}
+    <select {{ $attributes->merge($defaults) }}>
+        @foreach ($options as $value => $text)
+            <option class="bg-gray-100" value="{{ $value }}">{{ $text }}</option>
+        @endforeach
     </select>
 </x-forms.field>
-

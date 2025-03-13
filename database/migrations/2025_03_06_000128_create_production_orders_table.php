@@ -10,6 +10,7 @@ class CreateProductionOrdersTable extends Migration
     {
         Schema::create('production_orders', function (Blueprint $table) {
             $table->id();
+            $table->string('batch');
             $table->timestamps();
         });
     }
